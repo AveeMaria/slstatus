@@ -1,10 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
 /* interval between updates (in ms) */
-const unsigned int interval = 1000;
+const unsigned int interval = 500;
 
 /* text to show if no value can be retrieved */
-static const char unknown_str[] = "n/a";
+static const char unknown_str[] = "/";
 
 /* maximum output string length */
 #define MAXLEN 2048
@@ -63,14 +63,18 @@ static const char unknown_str[] = "n/a";
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  */
+
 static const struct arg args[] = {
 	/* function format          argument */
-	{ wifi_perc, 	"[wifi: %s%% ]",	 "wlp4s0", },
-	{ vol_perc,	"[VOL: %s%%] ",		"/dev/mixer"},				
-	{ battery_perc, "[BAT0: %s%%, ",	"BAT0" },
-	{ battery_perc, "BAT1: %s%%] ",		"BAT1" },
-	{ cpu_perc,	"[CPU:%s%%] ",		NULL},
-	{ ram_used,	"[RAM: %s] ",		NULL},
+	
+	/*{ temp, 	"[%s °C ]",		NULL},*/
+	{ run_command,  "[%s]",			"gorcas"},/*custom script*/
+	{ wifi_perc, 	"[WIFI:%s%%",		"wlp4s0", },
+	{ run_command,  " %s]",			"wifistatus"},/*custom script*/
+	{ vol_perc,	"[VOL:%s%%]",		"/dev/mixer"},				
+	{ battery_perc, "[\xF0\x9F\x94\x8B: %s%%,",	"BAT0" },
+	{ battery_perc, " %s%%]",		"BAT1" },
+	{ cpu_perc,	"[CPU:%s%%]",		NULL},
+	{ ram_used,	"[RAM:%s]",		NULL},
 	{ datetime,	"%s",			"[%T %d.%m.%Y]" },
-	/*	{ temp, 	"%s C ",		NULL},*/
 };
