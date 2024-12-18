@@ -68,13 +68,15 @@ static const struct arg args[] = {
 	/* function format          argument */
 	
 	/*{ temp, 	"[%s °C ]",		NULL},*/
-	{ run_command,  "[%s]",			"gorcas"},/*custom script*/
-	{ wifi_perc, 	"[WIFI:%s%%",		"wlp4s0", },
-	{ run_command,  " %s]",			"wifistatus"},/*custom script*/
-	{ vol_perc,	"[VOL:%s%%]",		"/dev/mixer"},				
-	{ battery_perc, "[\xF0\x9F\x94\x8B: %s%%,",	"BAT0" },
-	{ battery_perc, " %s%%]",		"BAT1" },
-	{ cpu_perc,	"[CPU:%s%%]",		NULL},
-	{ ram_used,	"[RAM:%s]",		NULL},
-	{ datetime,	"%s",			"[%T %d.%m.%Y]" },
+	{ run_command,  "[%s]",				"gorcas"},/*custom script*/
+	{ wifi_perc, 	"[\U0001F4F6 %s%%",		"wlp4s0", },
+	{ run_command,  " %s]",				"wifistatus"},/*custom script*/
+	{ vol_perc,	"[\U0001F50A %s%%]",		"/dev/mixer"},				
+	{ battery_perc, "[\xF0\x9F\x94\x8B %s%%,",	"BAT0" },
+	{ battery_perc, " %s%%]",			"BAT1" },
+	{ cpu_perc,	"[CPU:%s%%",			NULL},
+	{ ram_used,	", RAM:%s]",			NULL},
+	{ datetime,	"[\U0001F552 %s",		"%T" },
+	{ datetime,	" \U0001F4C5 %s]",		"%d.%m.%y" },
+	/*{ datetime,	"%s",				"[%T %d.%m.%Y]" },*/
 };
